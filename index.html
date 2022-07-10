@@ -4,9 +4,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="./recursos/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Hotel - Montaña nevada</title>
 </head>
 <body>
+    <header class="header__fondo">
+        <a href="./index.html"><img class="header__logo" src="./recursos/logo/logo_js.png"/></a>
+    </header>
+    <main class="main__grid">
+    <!-- banner con texto -->
+        <section class="main__banner">
+            <h2 class="main__titulo1">¡Una experiencia incomparable!</h2>
+            <p class="main__titulo2">BIENVENIDO AL COMPLEJO DE CABAÑAS MONTAÑA NEVADA</p>
+        </section>
+    <!-- TITULO -->
+        <section class="titulo__contenedor">
+            <p class="titulo__texto">La calidez de una cabaña con el confort  del mejor hotel de lujo</p>
+        </section>
+    <!-- cabaña1 2personas -->
+        <section class="cabania1__contenedor">
+            <section class="cabania1__imagen"></section>
+            <section class="cabania1__texto">
+                    <p class="cabania1__texto__titulo">Cabaña suite</p>
+                    <p class="cabania1__texto__descripcion">Cabaña cómoda y amplia, con cama king size y galería con sillones. Confort premium para 2 personas, ideal para parejas.</p>
+                    <div class="cabania1__texto__personas">
+                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-person"></i>
+                        <p class="cabania1__texto__chico">2 personas</p>
+                    </div>
+            </section>
+        </section>
+    <!-- Cabaña2 3 personas -->
+        <section class="cabania2__contenedor">
+            <section class="cabania2__texto">
+                <p class="cabania2__texto__titulo">Cabaña del mirador</p>
+                <p class="cabania2__texto__descripcion">Esta cabaña rústica tiene dos cuartos separados para 2 y 3 personas. Es ideal para familias ya que tiene un cuarto matrimonial separado de otro con 3 camas individuales. También es una opción cómoda para grupos de amigos.</p>
+                <div class="cabania2__texto__personas">
+                    <i class="fa-solid fa-person"></i>
+                    <i class="fa-solid fa-person"></i>
+                    <i class="fa-solid fa-person"></i>
+                    <p class="cabania2__texto__chico">3 personas</p>
+                </div>
+            </section>
+            <section class="cabania2__imagen"></section>
+        </section>
+    <!-- Cabaña 4 personas -->
+        <section class="cabania3__contenedor">
+            <section class="cabania3__imagen"></section>
+            <section class="cabania3__texto">
+                    <p class="cabania3__texto__titulo">Cabaña familiar</p>
+                    <p class="cabania3__texto__descripcion">Cabaña premium para 4 personas. Perfecta para brindar a familias y grupos de amigos la mayor comodidad.</p>
+                    <div class="cabania3__texto__personas">
+                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-person"></i>
+                        <p class="cabania3__texto__chico">4 personas</p>
+                    </div>
+            </section>
+        </section>
+    <!-- hospedaje -->
+        <section class="hospedaje__contenedor">
+            <section class="hospedaje__fondo__azul">
+                <p class="hospedaje__titulo">Hospedaje</p>
+        <!-- Botones -->
+                <div class="hospedaje__botones__contenedor">
+                    <button class="hospedaje__botones">LLEGADA</button>
+                    <button class="hospedaje__botones">SALIDA</button>
+                    <button class="hospedaje__botones">CABAÑA</button>
+                    <button class="hospedaje__botones">RESERVAR</button>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <div class="footer__redes__div1">
+            <h2 class="footer__redes__texto">Nuestras redes</h2>
+            <a class="footer__icono"  href="http://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a class="footer__icono" href="http://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div>
+            <p class="footer__texto">Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <script src="./js/main.js"></script>
+    <script src="https://kit.fontawesome.com/ea3c6ca5c1.js" crossorigin="anonymous"></script>
 </body>
 </html>
