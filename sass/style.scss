@@ -18,16 +18,8 @@
 
 /* MAIN */
 .main{
-    &__grid{
-        grid-template-areas:"banner banner"
-                            "titulo titulo"
-                            "cabana1 texto1"  
-                            "texto2 cabana2"
-                            "cabana3 texto3"
-                            "hospedaje hospedaje"
-    }/* banner */
+/* banner */
     &__banner{
-        grid-area: banner;
         display: flex;
         flex-direction: column;
         background-image: url(../recursos/banner/banner_patagonia-01.jpg);
@@ -64,12 +56,12 @@
 } /* cabania1 */
 .cabania1{
     &__contenedor{
+        grid-area: cabana1;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     &__imagen{
-        grid-area: cabana1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -78,7 +70,6 @@
         height: 82.5vh;
     }
     &__texto{
-        grid-area: texto1;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -120,7 +111,6 @@
         justify-content: center;
     }
     &__texto{
-        grid-area: texto2;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -155,7 +145,6 @@
         margin-left: 0.20rem;
     }
     &__imagen{
-        grid-area: cabana2;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -169,10 +158,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 5rem;
+        margin-bottom: 2rem;
     }
     &__imagen{
-        grid-area: cabana3;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -181,12 +169,10 @@
         height: 82.5vh;
     }
     &__texto{
-        grid-area: texto3;
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: #EEEBEA;
-        width: 50vw;
         height: 33vh;
     }
     &__texto__titulo{
@@ -220,6 +206,90 @@
 .fa-person{
     font-size: 1rem;
     padding: 0.10rem;
+}
+.servicios__flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    }
+/* TRANSLADOS */
+.traslado{
+    &__contenedor{
+        grid-area: traslados;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 3rem;
+    }
+    &__imagen{
+        display: flex;
+        justify-content: center;
+        background-image: url(../recursos/servicios/img_translado.jpg);
+        width: 33.6vw;
+        height: 70.5vh;
+        justify-items: center;
+        align-content: center;
+    }
+    &__titulo{
+        font-family: 'Playfair Display', serif;
+        color: #EEEBEA;
+        font-size: 3.2rem;
+        background-color: #112343;
+        text-align: center;
+        align-items: center;
+        width: 33.6vw;
+        height: 10vh;
+    }
+    &__texto__contenedor{
+        background-color: #EEEBEA;
+    }
+    &__texto{
+        font-family: 'Poppins', sans-serif;
+        color: #112343;
+        font-size: 1.15rem;
+        width: 33.6vw;
+        text-align: center;
+    }
+}
+
+.spa{
+    &__contenedor{
+        grid-area: spa;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 3rem;
+    }
+    &__imagen{
+        display: flex;
+        justify-content: center;
+        background-image: url(../recursos/servicios/img_spa.jpg);
+        width: 33.6vw;
+        height: 70.5vh;
+    }
+    &__titulo{
+        font-family: 'Playfair Display', serif;
+        color: #EEEBEA;
+        font-size: 3.2rem;
+        background-color: #112343;
+        text-align: center;
+        align-items: center;
+        width: 33.6vw;
+        height: 10vh;
+    }
+    &__texto__contenedor{
+        background-color: #EEEBEA;
+    }
+    &__texto{
+        font-family: 'Poppins', sans-serif;
+        color: #112343;
+        font-size: 1.15rem;
+        width: 33.6vw;
+        text-align: center;
+    }
 }
 
 /* HOSPEDAJE */

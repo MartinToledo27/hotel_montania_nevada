@@ -15,10 +15,7 @@
 /* MAIN */
 .main {
   /* banner */ }
-  .main__grid {
-    grid-template-areas: "banner banner" "titulo titulo" "cabana1 texto1"   "texto2 cabana2" "cabana3 texto3" "hospedaje hospedaje"; }
   .main__banner {
-    grid-area: banner;
     display: flex;
     flex-direction: column;
     background-image: url(../recursos/banner/banner_patagonia-01.jpg);
@@ -50,12 +47,12 @@
 
 /* cabania1 */
 .cabania1__contenedor {
+  grid-area: cabana1;
   display: flex;
   align-items: center;
   justify-content: center; }
 
 .cabania1__imagen {
-  grid-area: cabana1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +61,6 @@
   height: 82.5vh; }
 
 .cabania1__texto {
-  grid-area: texto1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,7 +100,6 @@
   justify-content: center; }
 
 .cabania2__texto {
-  grid-area: texto2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,7 +133,6 @@
   margin-left: 0.20rem; }
 
 .cabania2__imagen {
-  grid-area: cabana2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,10 +145,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5rem; }
+  margin-bottom: 2rem; }
 
 .cabania3__imagen {
-  grid-area: cabana3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,12 +156,10 @@
   height: 82.5vh; }
 
 .cabania3__texto {
-  grid-area: texto3;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #EEEBEA;
-  width: 50vw;
   height: 33vh; }
 
 .cabania3__texto__titulo {
@@ -199,6 +190,85 @@
 .fa-person {
   font-size: 1rem;
   padding: 0.10rem; }
+
+.servicios__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+
+/* TRANSLADOS */
+.traslado__contenedor {
+  grid-area: traslados;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem; }
+
+.traslado__imagen {
+  display: flex;
+  justify-content: center;
+  background-image: url(../recursos/servicios/img_translado.jpg);
+  width: 33.6vw;
+  height: 70.5vh;
+  justify-items: center;
+  align-content: center; }
+
+.traslado__titulo {
+  font-family: 'Playfair Display', serif;
+  color: #EEEBEA;
+  font-size: 3.2rem;
+  background-color: #112343;
+  text-align: center;
+  align-items: center;
+  width: 33.6vw;
+  height: 10vh; }
+
+.traslado__texto__contenedor {
+  background-color: #EEEBEA; }
+
+.traslado__texto {
+  font-family: 'Poppins', sans-serif;
+  color: #112343;
+  font-size: 1.15rem;
+  width: 33.6vw;
+  text-align: center; }
+
+.spa__contenedor {
+  grid-area: spa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3rem; }
+
+.spa__imagen {
+  display: flex;
+  justify-content: center;
+  background-image: url(../recursos/servicios/img_spa.jpg);
+  width: 33.6vw;
+  height: 70.5vh; }
+
+.spa__titulo {
+  font-family: 'Playfair Display', serif;
+  color: #EEEBEA;
+  font-size: 3.2rem;
+  background-color: #112343;
+  text-align: center;
+  align-items: center;
+  width: 33.6vw;
+  height: 10vh; }
+
+.spa__texto__contenedor {
+  background-color: #EEEBEA; }
+
+.spa__texto {
+  font-family: 'Poppins', sans-serif;
+  color: #112343;
+  font-size: 1.15rem;
+  width: 33.6vw;
+  text-align: center; }
 
 /* HOSPEDAJE */
 .hospedaje__contenedor {

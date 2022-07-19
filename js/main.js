@@ -1,33 +1,33 @@
 let temporada = 0;
-let valor__cabania = 0;
-let valor__total = 0;
+let valorCabania = 0;
+let valorTotal = 0;
 /* DIAS */
-let dias__hospedaje = parseInt(prompt("Ingrese la cantidad de días que quiere hospedarse."));
-while (dias__hospedaje <= 0) {
-    dias__hospedaje = parseInt(prompt("No es un valor posible. Ingrese la cantidad de días que quiere hospedarse."));
+let diasHospedaje = parseInt(prompt("Ingrese la cantidad de días que quiere hospedarse."));
+while (diasHospedaje <= 0) {
+    diasHospedaje = parseInt(prompt("No es un valor posible. Ingrese la cantidad de días que quiere hospedarse."));
 }
 /* MES */
-let mes__hospedaje = parseInt(prompt("Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
-while ((mes__hospedaje <= 0) || (mes__hospedaje > 12)){
-    mes__hospedaje = parseInt(prompt("No es un valor posible. Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
+let mesHospedaje = parseInt(prompt("Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
+while ((mesHospedaje <= 0) || (mesHospedaje > 12)){
+    mesHospedaje = parseInt(prompt("No es un valor posible. Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
 }
-if ((mes__hospedaje < 6) || (mes__hospedaje > 8)) {
+if ((mesHospedaje < 6) || (mesHospedaje > 8)) {
     temporada = 1
 } else {
     temporada = 2
 }
 
 /* PERSONAS */
-let personas__hospedaje = parseInt(prompt("Ingrese cuantas personas van a hospedarse. Valores de 2, 3 o 4 personas."));
-while ((personas__hospedaje < 2) || (personas__hospedaje > 4)) {
-    personas__hospedaje = parseInt(prompt("No es un valor posible. Ingrese cuantas personas van a hospedarse. Opciones: 2, 3 o 4 personas."));
+let personasHospedaje = parseInt(prompt("Ingrese cuantas personas van a hospedarse. Valores de 2, 3 o 4 personas."));
+while ((personasHospedaje < 2) || (personasHospedaje > 4)) {
+    personasHospedaje = parseInt(prompt("No es un valor posible. Ingrese cuantas personas van a hospedarse. Opciones: 2, 3 o 4 personas."));
 }
-if (personas__hospedaje == 2) {
-    valor__cabania = 6000;
-} else if (personas__hospedaje == 3) {
-    valor__cabania = 7000;
-} else if (personas__hospedaje == 4){
-    valor__cabania = 8000;
+if (personasHospedaje == 2) {
+    valorCabania = 6000;
+} else if (personasHospedaje == 3) {
+    valorCabania = 7000;
+} else if (personasHospedaje == 4){
+    valorCabania = 8000;
 } 
 /* CLASE PARA HOSPEDAJES */
 class Hospedaje {
@@ -38,15 +38,53 @@ class Hospedaje {
     }
 }
 /* ARRAY HOSPEDAJE NUEVO */
-let lista__hospedajes = []
+let listaHospedajes = [];
 /* FUNCION HOSPEDAJE NUEVO */
-const nuevo__hospedaje = new Hospedaje (dias__hospedaje, mes__hospedaje, personas__hospedaje);
+const nuevoHospedaje = new Hospedaje (diasHospedaje, mesHospedaje, personasHospedaje);
 reserva__resumen = () =>{
-    valor__total = valor__cabania * temporada * dias__hospedaje;
-    lista__hospedajes.push(nuevo__hospedaje);
-    alert (`Su hospedaje es de ${dias__hospedaje} dias, en el mes ${mes__hospedaje}, para ${personas__hospedaje} personas. El valor es de de $${valor__total}.`);
+    valorHospedaje = valorCabania * temporada * diasHospedaje;
+    listaHospedajes.push(nuevoHospedaje);
+    alert (`Su hospedaje es de ${diasHospedaje} dias, en el mes ${mesHospedaje}, para ${personasHospedaje} personas.\nEl valor parcial es de de $${valorHospedaje}.`);
+    return valorTotal;
 }
 reserva__resumen();
+///////////////////////////////
+/* CLASE PARA PRECIOS */
+class PrecioSumado {
+    constructor(precio){
+        this.precio = precio;
+    }
+}
+/* ARRAY PRECIO TOTAL */
+let sumaPrecios = [];
+/* SUMA PRECIO DEL HOSPEDAJE */
+let valorParcial = new PrecioSumado (valorHospedaje);
+sumaPrecios.push(valorParcial);
+/* SERVICIOS ADICIONALES */
+/* TRANSLADO */
+let valorTranslado = 5000;
+let servicioTranslado = (prompt(`¿Quiere agregar a su reserva el servicio de translado del aeropuerto al complejo de cabañas? \nCosto ${valorTranslado}. \n(Respuesta SI/NO)`)).toLowerCase();
+if (servicioTranslado == "si"){
+    alert (`Se ha añadido el servicio de translado.`)
+    valorParcial = new PrecioSumado (valorTranslado);
+    sumaPrecios.push(valorParcial);
+} else {
+    alert (`No ha añadido el servicio de translado.`)
+}
+/* SPA */
+let valorSpa = 5000;
+let servicioSpa = (prompt(`¿Quiere agregar a su reserva el servicio de spa?\nCosto ${valorSpa}. \n(Respuesta SI/NO)`)).toLowerCase();
+if (servicioSpa == "si"){
+    alert (`Se ha añadido el servicio de spa.`)
+    valorParcial = new PrecioSumado (valorSpa);
+    sumaPrecios.push(valorParcial);
+} else {
+    alert (`No ha añadido el servicio de spa.`)
+}
+
+const totalFinal = sumaPrecios.reduce ((acu, prod) => acu + prod.precio, 0 );
+alert (`Su precio final es de ${totalFinal}.`);
+
 ////////////////////////
 /* AGREGAR DATOS DE INQUILINOS */
 class Personas {
@@ -56,18 +94,20 @@ class Personas {
         this.dni = dni;
     }
 }
-let lista__personas = []
+/* ARRAY DE INQUILINOS */
+let listaPersonas = []
+/* FUNCIÓN DE DATOS */
 const agregar__persona = () => {
     let nombre = prompt("¿Cuál es el nombre de la persona a hospedarse?");
     let edad = parseInt(prompt("¿Cuál es la edad de esta persona?"));
     let dni = parseInt(prompt("Escriba el dni, sin puntos."))
-    let persona__nueva = new Personas (nombre, edad, dni);
-    lista__personas.push(persona__nueva);
+    let personaNueva = new Personas (nombre, edad, dni);
+    listaPersonas.push(personaNueva);
 }
-for ( let i = 1 ; i <= personas__hospedaje ; i++){
+for ( let i = 1 ; i <= personasHospedaje ; i++){
     agregar__persona()
 }
 
-for (let personas of lista__personas){
-    alert (`El nombre ingresado es ${personas.nombre}, su edad es ${personas.edad} años, con el dni: ${personas.dni}.`)
-}
+listaPersonas.forEach(producto => {
+    alert (`El nombre ingresado es ${producto.nombre}, su edad es ${producto.edad} años, con el dni: ${producto.dni}.`)
+})
