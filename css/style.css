@@ -275,7 +275,7 @@
   grid-area: hospedaje;
   display: flex;
   background-image: url(../recursos/hospedaje/img_hospedaje-01.jpg);
-  height: 60vh;
+  height: 70vh;
   margin-bottom: 5rem;
   justify-content: center;
   align-items: center; }
@@ -286,7 +286,7 @@
   justify-content: center;
   align-content: center;
   width: 70vw;
-  height: 30vh;
+  height: 60vh;
   background-color: #112343; }
 
 .hospedaje__titulo {
@@ -309,6 +309,14 @@
   color: #112343;
   background-color: #EEEBEA;
   font-size: 1rem; }
+
+.elementoHospedaje__texto {
+  font-family: 'Playfair Display', serif;
+  color: #EEEBEA;
+  font-size: 1rem;
+  background-color: #112343;
+  height: 5vh;
+  margin-left: 4rem; }
 
 /* FOOTER */
 footer {

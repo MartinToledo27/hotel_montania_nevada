@@ -44,7 +44,6 @@ const nuevoHospedaje = new Hospedaje (diasHospedaje, mesHospedaje, personasHospe
 reserva__resumen = () =>{
     valorHospedaje = valorCabania * temporada * diasHospedaje;
     listaHospedajes.push(nuevoHospedaje);
-    alert (`Su hospedaje es de ${diasHospedaje} dias, en el mes ${mesHospedaje}, para ${personasHospedaje} personas.\nEl valor parcial es de de $${valorHospedaje}.`);
     return valorTotal;
 }
 reserva__resumen();
@@ -83,7 +82,6 @@ if (servicioSpa == "si"){
 }
 
 const totalFinal = sumaPrecios.reduce ((acu, prod) => acu + prod.precio, 0 );
-alert (`Su precio final es de ${totalFinal}.`);
 
 ////////////////////////
 /* AGREGAR DATOS DE INQUILINOS */
@@ -108,6 +106,27 @@ for ( let i = 1 ; i <= personasHospedaje ; i++){
     agregar__persona()
 }
 
+
+/* MUESTRO HOSPEDAJE */
+listaHospedajes.forEach(datos =>{
+    let elementoHospedajeResumen = document.createElement("div");
+    elementoHospedajeResumen.setAttribute ("class", "elementoHospedaje__texto");
+    elementoHospedajeResumen.innerText = `El resumen de su hospedaje es de ${datos.dias} dias, en el mes ${datos.mes}, para ${datos.personas} personas.`;
+    let hospedajeResumenFinal = document.getElementById("hospedajeResumenFinal");
+    hospedajeResumenFinal.appendChild(elementoHospedajeResumen);
+})
+/* MUESTRO PRECIO FINAL */
+let elementoHospedajePrecio = document.createElement ("div");
+elementoHospedajePrecio.setAttribute ("class", "elementoHospedaje__texto");
+elementoHospedajePrecio.innerText = `Su precio final es de AR$${totalFinal}.`;
+let hospedajePrecioFinal = document.getElementById("hospedajeResumenFinal");
+hospedajePrecioFinal.appendChild(elementoHospedajePrecio);
+
+/* MUESTRO PERSONAS */
 listaPersonas.forEach(producto => {
-    alert (`El nombre ingresado es ${producto.nombre}, su edad es ${producto.edad} años, con el dni: ${producto.dni}.`)
+    let elementoPersonaResumen = document.createElement("div");
+    elementoPersonaResumen.setAttribute ("class", "elementoHospedaje__texto");
+    elementoPersonaResumen.innerText = `El nombre ingresado es ${producto.nombre}, su edad es ${producto.edad} años, con el dni: ${producto.dni}.`;
+    let hospedajePersonaFinal = document.getElementById("hospedajeResumenFinal");
+    hospedajePersonaFinal.appendChild(elementoPersonaResumen);
 })
