@@ -1,132 +1,89 @@
-let temporada = 0;
+const boton = document.getElementById("reserva");
+const resumen = document.getElementById("resumen");
+const milisegundosPorDia = 86400000;
+const selectCabania = document.getElementById("selectCabania");
 let valorCabania = 0;
-let valorTotal = 0;
-/* DIAS */
-let diasHospedaje = parseInt(prompt("Ingrese la cantidad de días que quiere hospedarse."));
-while (diasHospedaje <= 0) {
-    diasHospedaje = parseInt(prompt("No es un valor posible. Ingrese la cantidad de días que quiere hospedarse."));
-}
-/* MES */
-let mesHospedaje = parseInt(prompt("Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
-while ((mesHospedaje <= 0) || (mesHospedaje > 12)){
-    mesHospedaje = parseInt(prompt("No es un valor posible. Ingrese el mes que quiere hospedarse. Valores del mes 1 al 12."));
-}
-if ((mesHospedaje < 6) || (mesHospedaje > 8)) {
-    temporada = 1
-} else {
-    temporada = 2
+let valorSpa = 0;
+let valorTraslado = 0;
+
+
+
+/* FUNCION FECHA */
+let funcionFecha = () => {
+    let fechaLlegada = document.getElementById("fechaLlegada").value;
+    let fechaSalida = document.getElementById("fechaSalida").value;
+    let fecha1 = new Date(fechaLlegada);
+    let fecha2 = new Date(fechaSalida);
+    let milisegundosTranscurridos = Math.abs(fecha1.getTime() - fecha2.getTime())
+    let diasTranscurridos = Math.round(milisegundosTranscurridos/milisegundosPorDia);
+    return (diasTranscurridos);
 }
 
-/* PERSONAS */
-let personasHospedaje = parseInt(prompt("Ingrese cuantas personas van a hospedarse. Valores de 2, 3 o 4 personas."));
-while ((personasHospedaje < 2) || (personasHospedaje > 4)) {
-    personasHospedaje = parseInt(prompt("No es un valor posible. Ingrese cuantas personas van a hospedarse. Opciones: 2, 3 o 4 personas."));
-}
-if (personasHospedaje == 2) {
-    valorCabania = 6000;
-} else if (personasHospedaje == 3) {
-    valorCabania = 7000;
-} else if (personasHospedaje == 4){
-    valorCabania = 8000;
-} 
-/* CLASE PARA HOSPEDAJES */
-class Hospedaje {
-    constructor(dias, mes, personas){
-        this.dias = dias;
-        this.mes = mes;
-        this.personas = personas;
+/* FUNCION CABANIA */   
+let funcionCabania = () => {
+    if (selectCabania.value == "Cabaña suite") {
+        valorCabania = 6000;
+    } else if (selectCabania.value == "Cabaña del mirador") {
+        valorCabania = 7000;
+    } else if (selectCabania.value == "Cabaña familiar") {
+        valorCabania = 8000;
     }
+    return(valorCabania);
 }
-/* ARRAY HOSPEDAJE NUEVO */
-let listaHospedajes = [];
-/* FUNCION HOSPEDAJE NUEVO */
-const nuevoHospedaje = new Hospedaje (diasHospedaje, mesHospedaje, personasHospedaje);
-reserva__resumen = () =>{
-    valorHospedaje = valorCabania * temporada * diasHospedaje;
-    listaHospedajes.push(nuevoHospedaje);
-    return valorTotal;
-}
-reserva__resumen();
-///////////////////////////////
-/* CLASE PARA PRECIOS */
-class PrecioSumado {
-    constructor(precio){
-        this.precio = precio;
+
+boton.addEventListener("click",() => {
+    boton.style.display = "none";
+    let precioResumen = (funcionCabania() * funcionFecha());
+    if (funcionCabania() <= 0) {
+        alert `No es un día posible`;
+    } else {
+        resumen.innerHTML = `<p class="elementoHospedaje__texto">El resumen de la reserva es de: ${funcionFecha()} días, en la cabaña "${selectCabania.value}" por un total de AR$${precioResumen}.</p>
+        <div class="hospedaje__botones_cadauno">
+            <p class="elementoHospedaje__texto">¿Quiere añardir el traslado hacia el complejo de cabañas? Costo: AR$5000.</p>
+            <select class="hospedaje__botones" id="selectTraslado">
+                <option>Si</option>
+                <option>No</option>
+            </select>
+        </div>
+        <div class="hospedaje__botones_cadauno">
+            <p class="elementoHospedaje__texto">¿Quiere añardir el servicio de SPA? Costo: AR$5000.</p>
+            <select class="hospedaje__botones" id="selectSpa">
+                <option>Si</option>
+                <option>No</option>
+            </select>
+        </div>
+        <div class="hospedaje__botones_cadauno">
+            <button class="hospedaje__botones" id="confirmar">CONFIRMAR</button>
+        </div>`;
+        const selectTraslado = document.getElementById("selectTraslado");
+        const selectSpa = document.getElementById("selectSpa");
+        const boton2 = document.getElementById("confirmar");
+        let confirmacion = document.getElementById("contenedorConfirmacion");
+        let precioTraslado = () => {
+            if (selectTraslado.value == "Si") {
+                valorTraslado = 5000;
+            } else if (selectTraslado.value == "No") {
+                valorTraslado = 0;
+            }
+            return valorTraslado;
+        }
+        let precioSpa = () => {
+            if (selectSpa.value == "Si") {
+                valorSpa = 5000;
+
+            } else if (selectSpa.value == "No") {
+                valorSpa = 0;
+            }
+            return valorSpa;
+        }
+        boton2.addEventListener("click",() => {
+            boton2.style.display = "none";
+            let precioFinal = (precioResumen + precioSpa() + precioTraslado());
+                confirmacion.innerHTML = 
+                `<p class="elementoHospedaje__texto">El resumen de la reserva es de: ${funcionFecha()}, en la cabaña ${selectCabania.value} por un total de AR$${precioFinal}.</p>
+                <div class="hospedaje__botones_cadauno">
+                    <button class="hospedaje__botones" id="continuar">CONTINUAR</button>
+                </div>`
+        })
     }
-}
-/* ARRAY PRECIO TOTAL */
-let sumaPrecios = [];
-/* SUMA PRECIO DEL HOSPEDAJE */
-let valorParcial = new PrecioSumado (valorHospedaje);
-sumaPrecios.push(valorParcial);
-/* SERVICIOS ADICIONALES */
-/* TRANSLADO */
-let valorTranslado = 5000;
-let servicioTranslado = (prompt(`¿Quiere agregar a su reserva el servicio de translado del aeropuerto al complejo de cabañas? \nCosto ${valorTranslado}. \n(Respuesta SI/NO)`)).toLowerCase();
-if (servicioTranslado == "si"){
-    alert (`Se ha añadido el servicio de translado.`)
-    valorParcial = new PrecioSumado (valorTranslado);
-    sumaPrecios.push(valorParcial);
-} else {
-    alert (`No ha añadido el servicio de translado.`)
-}
-/* SPA */
-let valorSpa = 5000;
-let servicioSpa = (prompt(`¿Quiere agregar a su reserva el servicio de spa?\nCosto ${valorSpa}. \n(Respuesta SI/NO)`)).toLowerCase();
-if (servicioSpa == "si"){
-    alert (`Se ha añadido el servicio de spa.`)
-    valorParcial = new PrecioSumado (valorSpa);
-    sumaPrecios.push(valorParcial);
-} else {
-    alert (`No ha añadido el servicio de spa.`)
-}
-
-const totalFinal = sumaPrecios.reduce ((acu, prod) => acu + prod.precio, 0 );
-
-////////////////////////
-/* AGREGAR DATOS DE INQUILINOS */
-class Personas {
-    constructor (nombre, edad, dni){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.dni = dni;
-    }
-}
-/* ARRAY DE INQUILINOS */
-let listaPersonas = []
-/* FUNCIÓN DE DATOS */
-const agregar__persona = () => {
-    let nombre = prompt("¿Cuál es el nombre de la persona a hospedarse?");
-    let edad = parseInt(prompt("¿Cuál es la edad de esta persona?"));
-    let dni = parseInt(prompt("Escriba el dni, sin puntos."))
-    let personaNueva = new Personas (nombre, edad, dni);
-    listaPersonas.push(personaNueva);
-}
-for ( let i = 1 ; i <= personasHospedaje ; i++){
-    agregar__persona()
-}
-
-
-/* MUESTRO HOSPEDAJE */
-listaHospedajes.forEach(datos =>{
-    let elementoHospedajeResumen = document.createElement("div");
-    elementoHospedajeResumen.setAttribute ("class", "elementoHospedaje__texto");
-    elementoHospedajeResumen.innerText = `El resumen de su hospedaje es de ${datos.dias} dias, en el mes ${datos.mes}, para ${datos.personas} personas.`;
-    let hospedajeResumenFinal = document.getElementById("hospedajeResumenFinal");
-    hospedajeResumenFinal.appendChild(elementoHospedajeResumen);
-})
-/* MUESTRO PRECIO FINAL */
-let elementoHospedajePrecio = document.createElement ("div");
-elementoHospedajePrecio.setAttribute ("class", "elementoHospedaje__texto");
-elementoHospedajePrecio.innerText = `Su precio final es de AR$${totalFinal}.`;
-let hospedajePrecioFinal = document.getElementById("hospedajeResumenFinal");
-hospedajePrecioFinal.appendChild(elementoHospedajePrecio);
-
-/* MUESTRO PERSONAS */
-listaPersonas.forEach(producto => {
-    let elementoPersonaResumen = document.createElement("div");
-    elementoPersonaResumen.setAttribute ("class", "elementoHospedaje__texto");
-    elementoPersonaResumen.innerText = `El nombre ingresado es ${producto.nombre}, su edad es ${producto.edad} años, con el dni: ${producto.dni}.`;
-    let hospedajePersonaFinal = document.getElementById("hospedajeResumenFinal");
-    hospedajePersonaFinal.appendChild(elementoPersonaResumen);
 })
