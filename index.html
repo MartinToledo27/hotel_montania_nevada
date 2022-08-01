@@ -69,6 +69,9 @@
             </section>
         </section>
     <!-- SERVICIOS -->
+    <section class="titulo__contenedor">
+        <p class="titulo__texto">Conocé nuestros servicios</p>
+    </section>
     <!-- Traslado -->
         <sector class="servicios__flex">
             <section class="traslado__contenedor">
@@ -93,26 +96,28 @@
     <!-- hospedaje -->
         <section class="hospedaje__contenedor">
             <section class="hospedaje__fondo__azul">
-                <p class="hospedaje__titulo">Hospedaje</p>
-        <!-- Botones -->
-                <div class="hospedaje__botones__contenedor">
-                    <div class="hospedaje__botones_cadauno">
-                        <p class="hospedaje__botones">LLEGADA</p>
-                        <input class="hospedaje__botones" type="date" id="fechaLlegada" value="2022-07-01">
-                    </div>
-                    <div class="hospedaje__botones_cadauno">
-                        <p class="hospedaje__botones">SALIDA</p>
-                        <input class="hospedaje__botones" type="date" id="fechaSalida" value="2022-07-01">
-                    </div>
-                    <div class="hospedaje__botones_cadauno">
-                        <p class="hospedaje__botones">CABAÑA</p>
-                        <form>
-                            <select class="hospedaje__botones" id="selectCabania">
-                                <option>Cabaña suite</option>
-                                <option>Cabaña del mirador</option>
-                                <option>Cabaña familiar</option>
-                            </select>
-                        </form>
+                <div id="contenedorHospedaje">
+                    <p class="hospedaje__titulo">Hospedaje</p>
+            <!-- Botones -->
+                    <div class="hospedaje__botones__contenedor">
+                        <div class="hospedaje__botones_cadauno">
+                            <p class="hospedaje__botones">LLEGADA</p>
+                            <input class="hospedaje__botones" type="date" id="fechaLlegada" value="2022-07-01">
+                        </div>
+                        <div class="hospedaje__botones_cadauno">
+                            <p class="hospedaje__botones">SALIDA</p>
+                            <input class="hospedaje__botones" type="date" id="fechaSalida" value="2022-07-01">
+                        </div>
+                        <div class="hospedaje__botones_cadauno">
+                            <p class="hospedaje__botones">CABAÑA</p>
+                            <form>
+                                <select class="hospedaje__botones" id="selectCabania">
+                                    <option>Cabaña suite</option>
+                                    <option>Cabaña del mirador</option>
+                                    <option>Cabaña familiar</option>
+                                </select>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="hospedaje__botones_cadauno">
@@ -120,6 +125,8 @@
                 </div>
                 <div class="hospedaje__botones_cadauno" id="resumen"></div>  
                 <div class="hospedaje__botones_cadauno" id="contenedorConfirmacion"></div>
+                <div class="hospedaje__botones_cadauno" id="contenedorIngresarDatos"></div>
+                <div class="hospedaje__botones_cadauno" id="resumenFinal"></div>
             </section>
         </section>
     </main>
@@ -131,7 +138,6 @@
         </div>
         <div>
             <p class="footer__texto">Todos los derechos reservados.</p>
-        </div>
     </footer>
     <script src="./js/main.js"></script>
     <script src="https://kit.fontawesome.com/ea3c6ca5c1.js" crossorigin="anonymous"></script>

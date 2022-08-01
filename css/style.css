@@ -43,7 +43,8 @@
   font-family: 'Playfair Display', serif;
   color: #112343;
   font-size: 3rem;
-  width: 50vw; }
+  width: 50vw;
+  text-align: center; }
 
 /* cabania1 */
 .cabania1__contenedor {
@@ -310,7 +311,8 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  font-size: 1.15rem; }
+  font-size: 1.15rem;
+  margin: 0.20rem; }
 
 .hospedaje__botones_cadauno {
   display: flex;
@@ -318,12 +320,25 @@
   align-items: center;
   justify-content: center; }
 
+.hospedaje__subtitulo {
+  font-family: 'Playfair Display', serif;
+  color: #EEEBEA;
+  font-size: 2rem;
+  padding-bottom: 0.75rem;
+  text-align: center; }
+
+.hospedaje__imputs {
+  width: 20vw;
+  font-family: 'Poppins', sans-serif;
+  color: #112343;
+  background-color: #EEEBEA;
+  font-size: 1rem;
+  margin: 0.25rem; }
+
 .elementoHospedaje__texto {
   font-family: 'Playfair Display', serif;
   color: #EEEBEA;
-  font-size: 1rem;
-  background-color: #112343;
-  height: 5vh; }
+  font-size: 1rem; }
 
 /* FOOTER */
 footer {
