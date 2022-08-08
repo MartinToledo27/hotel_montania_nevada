@@ -14,6 +14,8 @@ const precios = {
     precioTraslado: 5000,
     precioSpa: 5000
 }
+let {precioCabania1, precioCabania2, precioCabania3, precioTraslado, precioSpa} = precios;
+
 /* FUNCION FECHA */
 let funcionFecha = () => {
     let fechaLlegada = document.getElementById("fechaLlegada").value;
@@ -27,33 +29,22 @@ let funcionFecha = () => {
 
 /* FUNCION CABANIA */   
 let funcionCabania = () => {
-    if (selectCabania.value == "Cabaña suite") {
-        valorCabania = precios.precioCabania1;
-    } else if (selectCabania.value == "Cabaña del mirador") {
-        valorCabania = precios.precioCabania2;
-    } else if (selectCabania.value == "Cabaña familiar") {
-        valorCabania = precios.precioCabania3;
-    }
+    (selectCabania.value == "Cabaña suite") ? valorCabania = precioCabania1 :
+    (selectCabania.value == "Cabaña del mirador") ? valorCabania = precioCabania2 :
+    (selectCabania.value == "Cabaña familiar") ? valorCabania = precioCabania3 :
+    valorCabania = 0;
     return(valorCabania);
 }
 /* FUNCION VALIDAR SPA */
 const funcionSpa = () => {
     let validacionSpa;
-    if (valorSpa == precios.precioSpa){
-        validacionSpa = "Si";
-    } else {
-        validacionSpa = "No";
-    }
+    valorSpa == precioSpa ? validacionSpa = "Si" : validacionSpa = "No";
     return (validacionSpa);
 }
 /* FUNCION VALIDAR TRASLADO */
 const funcionTraslado = () => {
     let validacionTraslado;
-    if (valorTraslado == precios.precioTraslado){
-        validacionTraslado = "Si";
-    } else {
-        validacionTraslado = "No";
-    }
+    valorTraslado == precioTraslado ? validacionTraslado = "Si" : validacionTraslado = "No";
     return (validacionTraslado);
 }
 ////////////////////////
@@ -71,7 +62,7 @@ class Reservas {
     }
 }
 /* ARRAY DE INQUILINOS */
-let listaReservas = []
+let listaReservas = JSON.parse(localStorage.getItem(`listaReservas`)) || [];
 /* FUNCIÓN DE DATOS */
 const agregarReserva = () => {
     let reservaNueva = new Reservas (ingresarNombre.value, ingresarEdad.value, ingresarDni.value, selectCabania.value, document.getElementById("fechaLlegada").value, document.getElementById("fechaSalida").value, funcionSpa(), funcionTraslado());
@@ -108,20 +99,11 @@ boton.addEventListener("click",() => {
         const boton2 = document.getElementById("confirmar");
         let confirmacion = document.getElementById("contenedorConfirmacion");
         let precioTraslado = () => {
-            if (selectTraslado.value == "Si") {
-                valorTraslado = precios.precioTraslado;
-            } else if (selectTraslado.value == "No") {
-                valorTraslado = 0;
-            }
+            selectTraslado.value == "Si" ? valorTraslado = precioTraslado : valorTraslado = 0;
             return valorTraslado;
         }
         let precioSpa = () => {
-            if (selectSpa.value == "Si") {
-                valorSpa = precios.precioSpa;
-
-            } else if (selectSpa.value == "No") {
-                valorSpa = 0;
-            }
+            selectSpa.value == "Si" ? valorSpa = precioSpa : valorSpa = 0;
             return valorSpa;
         }
         boton2.addEventListener("click",() => {
