@@ -2,6 +2,7 @@ const boton = document.getElementById("reserva");
 const resumen = document.getElementById("resumen");
 const milisegundosPorDia = 86400000;
 const selectCabania = document.getElementById("selectCabania");
+
 let valorCabania = 0;
 let valorSpa = 0;
 let valorTraslado = 0;
@@ -98,19 +99,19 @@ boton.addEventListener("click",() => {
         const selectSpa = document.getElementById("selectSpa");
         const boton2 = document.getElementById("confirmar");
         let confirmacion = document.getElementById("contenedorConfirmacion");
-        let precioTraslado = () => {
+        let confirmarTraslado = () => {
             selectTraslado.value == "Si" ? valorTraslado = precioTraslado : valorTraslado = 0;
             return valorTraslado;
         }
-        let precioSpa = () => {
+        let confirmarSpa = () => {
             selectSpa.value == "Si" ? valorSpa = precioSpa : valorSpa = 0;
             return valorSpa;
         }
         boton2.addEventListener("click",() => {
             boton2.style.display = "none";
-            let precioFinal = (precioResumen + precioSpa() + precioTraslado());
+            let precioFinal = (precioResumen + confirmarSpa() + confirmarTraslado());
                 confirmacion.innerHTML = 
-                `<p class="elementoHospedaje__texto">El resumen de la reserva es de: ${funcionFecha()}, en la cabaña ${selectCabania.value} por un total de AR$${precioFinal}.</p>
+                `<p class="elementoHospedaje__texto">El resumen de la reserva es de:  ${funcionFecha()} días, en la cabaña ${selectCabania.value} por un total de AR$${precioFinal}.</p>
                 <div class="hospedaje__botones_cadauno">
                     <button class="hospedaje__botones" id="continuar">CONTINUAR</button>
                 </div>`
@@ -144,7 +145,7 @@ boton.addEventListener("click",() => {
                         ingresarDatos.style.display = "none";
                         resumenFinal.innerHTML = 
                         `<div class="hospedaje__botones_cadauno">
-                        <p class="hospedaje__subtitulo">¡Su reserva se ha creado con exito!</p>
+                        <p class="hospedaje__subtitulo">Haga click en "confirmar" para confirmar los datos de la reserva.</p>
                         <p class="elementoHospedaje__texto">Los datos ingresados son:</p>
                         <p class="elementoHospedaje__texto">Fecha de llegada: ${document.getElementById("fechaLlegada").value}</p>
                         <p class="elementoHospedaje__texto">Fecha de salida: ${document.getElementById("fechaSalida").value}</p>
@@ -155,11 +156,16 @@ boton.addEventListener("click",() => {
                         <p class="elementoHospedaje__texto">Resposable de la reserva: ${ingresarNombre.value}</p>
                         <p class="elementoHospedaje__texto">Edad: ${ingresarEdad.value}</p>
                         <p class="elementoHospedaje__texto">Dni: ${ingresarDni.value}</p>
-                            <button class="hospedaje__botones" id="terminar">TERMINAR</button>
+                            <button class="hospedaje__botones" id="terminar">CONFIRMAR</button>
                         </div>
                     </div>`
                         const boton5 = document.getElementById("terminar")
                         boton5.addEventListener("click", ()=> {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Su reserva fue creada con exito!',
+                                confirmButtonText: 'Cerrar'
+                              })
                             boton5.style.display = "none";
                             agregarReserva();
                             ////////////////////
