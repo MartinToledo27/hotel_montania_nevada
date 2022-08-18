@@ -178,4 +178,20 @@ boton.addEventListener("click",() => {
         })
     }
 })
+/* RESEÑAS */
+const contResenia = document.getElementById("contenedorResenias");
 
+
+fetch('/resenias.json')
+    .then(response => response.json())
+    .then(result => {
+        result.forEach((persona) => {
+            contResenia.innerHTML += `
+            <div class="resenia__caja">
+                <p class="resenia__titulo">${persona.nombre}</p>
+                <p class="resenia__texto">${persona.estrellas} estellas</p>
+                <p class="resenia__texto">"${persona.comentario}"</p>
+            <div>
+            `
+        })
+    })

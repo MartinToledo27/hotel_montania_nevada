@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0px;
   padding: 0px; }
@@ -339,6 +340,48 @@
   font-family: 'Playfair Display', serif;
   color: #EEEBEA;
   font-size: 1rem; }
+
+/* RESEÑAS */
+.resenia {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../recursos/resenias_fondo-01.jpg);
+  height: 89vh;
+  margin-bottom: 2rem; }
+  .resenia__titulo__texto {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 2.50rem;
+    background-color: #112343;
+    width: 45vw; }
+  .resenia__contenedor {
+    display: flex;
+    flex-direction: column;
+    align-content: center; }
+  .resenia__caja {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2rem;
+    background-color: #EEEBEA;
+    height: 13vh;
+    width: 45vw; }
+  .resenia__titulo {
+    font-family: 'Poppins', sans-serif;
+    color: #112343;
+    margin-left: 0.5rem;
+    font-size: 1.15rem;
+    justify-content: center; }
+  .resenia__texto {
+    font-family: 'Poppins', sans-serif;
+    color: #112343;
+    font-size: 0.75rem;
+    width: 45vw;
+    margin-left: 0.5rem; }
 
 /* FOOTER */
 footer {
