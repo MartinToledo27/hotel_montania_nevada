@@ -182,7 +182,7 @@ boton.addEventListener("click",() => {
 const contResenia = document.getElementById("contenedorResenias");
 
 
-fetch('/resenias.json')
+fetch('https://github.com/MartinToledo27/hotel_montania_nevada/blob/main/resenias.json')
     .then(response => response.json())
     .then(result => {
         result.forEach((persona) => {
