@@ -182,7 +182,7 @@ boton.addEventListener("click",() => {
 const contResenia = document.getElementById("contenedorResenias");
 
 
-fetch('/resenias.json')
+fetch('./resenias.json')
     .then(response => response.json())
     .then(result => {
         result.forEach((persona) => {
