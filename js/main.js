@@ -145,7 +145,7 @@ boton.addEventListener("click",() => {
                         ingresarDatos.style.display = "none";
                         resumenFinal.innerHTML = 
                         `<div class="hospedaje__botones_cadauno">
-                        <p class="hospedaje__subtitulo">Haga click en "confirmar" para confirmar los datos de la reserva.</p>
+                        <p class="hospedaje__subtitulo" id="titulConfirmar">Haga click en "confirmar" para confirmar los datos de la reserva.</p>
                         <p class="elementoHospedaje__texto">Los datos ingresados son:</p>
                         <p class="elementoHospedaje__texto">Fecha de llegada: ${document.getElementById("fechaLlegada").value}</p>
                         <p class="elementoHospedaje__texto">Fecha de salida: ${document.getElementById("fechaSalida").value}</p>
@@ -161,6 +161,7 @@ boton.addEventListener("click",() => {
                     </div>`
                         const boton5 = document.getElementById("terminar")
                         boton5.addEventListener("click", ()=> {
+                            titulConfirmar.style.display = "none"
                             Swal.fire({
                                 icon: 'success',
                                 title: '¡Su reserva fue creada con exito!',
